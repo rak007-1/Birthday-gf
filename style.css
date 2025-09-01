@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 50%, #ffe6f2 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Floating hearts animation */
+.heart {
+    position: absolute;
+    top: 100vh; /* เริ่มจากล่างสุดของ viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff69b4;
+    font-size: 20px;
+    animation: floatHearts 8s infinite linear;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(-50%) translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Floating balloons */
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: floatBalloons 12s infinite ease-in-out;
+}
+
+.balloon.pink {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.balloon.purple {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.balloon.blue {
+    background: linear-gradient(135deg, #74b9ff 0%, #e17055 100%);
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
+}
+
+@keyframes floatBalloons {
+    0%, 100% {
+        transform: translateY(0px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    color: #ffd700;
+    font-size: 16px;
+    animation: sparkleAnimation 3s infinite ease-in-out;
+}
+
+@keyframes sparkleAnimation {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Main content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: #d63384;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    to {
+        text-shadow: 2px 2px 20px rgba(214, 51, 132, 0.3);
+    }
+}
+
+.cake-container {
+    position: relative;
+    margin: 2rem 0;
+}
+/* Candles positioning */
+.candles {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: clamp(15px, 4vw, 30px);
+}
+
+.candle {
+    position: relative;
+    width: clamp(8px, 2vw, 12px);
+    height: clamp(40px, 8vw, 60px);
+    background: linear-gradient(to bottom, #ffeb3b 0%, #ffc107 100%);
+    border-radius: 2px;
+}
+.cake {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, 30%);
+width: 200px;
+height: 120px;
+z-index: -1;
+}
+
+/* เค้กฐาน */
+.base {
+position: absolute;
+bottom: 0;
+width: 100%;
+height: 80px;
+background: linear-gradient(to bottom, #ff9aa2, #ff6f91);
+border-radius: 0 0 20px 20px;
+box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ฟรอสติ้งบนหน้าเค้ก */
+.frosting {
+position: absolute;
+top: 0;
+width: 100%;
+height: 50px;
+background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+z-index: 2;
+box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* ครีมไหล */
+.drip {
+position: absolute;
+width: 20px;
+height: 25px;
+background: #ffe4ec;
+border-radius: 50%;
+z-index: 1;
+}
+
+.drip1 {
+top: 40px;
+left: 30px;
+}
+
+.drip2 {
+top: 42px;
+left: 80px;
+}
+
+.drip3 {
+top: 38px;
+left: 140px;
+}
+
+.flame {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(12px, 3vw, 18px);
+    height: clamp(15px, 4vw, 22px);
+    background: radial-gradient(circle, #ff6b35 0%, #ff8e53 30%, #ffad33 60%, #ffd700 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+    transition: opacity 0.3s ease;
+}
+
+.flame.extinguished {
+    opacity: 0;
+    animation: none;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) rotate(-2deg) scale(1);
+    }
+    100% {
+        transform: translateX(-50%) rotate(2deg) scale(1.1);
+    }
+}
+
+.message {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: #6f42c1;
+    text-align: center;
+    margin-top: 8rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.instruction {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: #6c757d;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .candles {
+        gap: 10px;
+    }
+}
+
+/* Audio controls styling */
+audio {
+    margin-top: 1rem;
+    border-radius: 25px;
+    outline: none;
+}
